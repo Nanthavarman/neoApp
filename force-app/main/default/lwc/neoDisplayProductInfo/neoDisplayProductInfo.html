@@ -1,0 +1,41 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading.." size="small"></lightning-spinner>
+    </template>
+    <div if:true={noRecords}>
+        <lightning-card>
+            <p class="slds-text-align_center slds-var-p-around_small">{message}</p>
+        </lightning-card>
+    </div>
+    <div if:false={noRecords}>        
+        
+        <lightning-card variant="Narrow" title="Product Details" icon-name="standard:product">
+            <div style="height: 170px;">
+                <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Product Name : {productDetails.productName}</p>
+                <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Product Code : {productDetails.productCode}</p>
+                <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Home Country : {productDetails.homeCountry}</p>     
+                <div if:true={productDetails.isPriceNA}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Product Price : N/A</p>
+                </div>
+                <div if:false={productDetails.isPriceNA}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Product Price : <lightning-formatted-number value={productDetails.price} format-style="currency" currency-code={productDetails.priceCurrency}></lightning-formatted-number></p>
+                </div>
+
+                <div if:true={productDetails.isATMFree}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> ATM Fee : Free</p>
+                </div>
+                <div if:false={productDetails.isATMFree}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> ATM Fee : <lightning-formatted-number value={productDetails.atmFee} format-style="percent" maximum-fraction-digits="2"></lightning-formatted-number></p>
+                </div>
+
+                <div if:true={productDetails.isCardFree}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Card Replacement Fee : Free</p>
+                </div>
+                <div if:false={productDetails.isCardFree}>
+                    <p class="slds-p-horizontal_medium slds-p-vertical_xx-small"> Card Replacement Fee : <lightning-formatted-number value={productDetails.cardReplacementFee} format-style="currency" currency-code={productDetails.priceCurrency}></lightning-formatted-number></p>
+                </div>
+            </div>
+        </lightning-card> 
+    </div>
+
+</template>

@@ -1,0 +1,16 @@
+[
+    {
+        "atmFee":0.0171,
+        "cardReplacementFee":6,
+        "homeCountry":"Germany",
+        "homeCountryCode":"DE",
+        "isATMFree":false,
+        "isCardFree":false,
+        "isPriceNA":false,
+        "price":9.9,
+        "priceCurrency":"GBP",
+        "productCode":"MON-STDN",
+        "productName":"Black",
+        "recordId":"01t8d000003AUU8AAO"
+    }
+]
